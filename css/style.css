@@ -1,0 +1,781 @@
+/* 共通設定 */
+:root {
+    --yellow: #f8f84c;
+    --ink: #111;
+    --muted: #777;
+    --surface: #f7f7f7;
+    --line: #e8e8e8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    font-family: Arial, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', Meiryo, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button,
+a,
+input,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #4269d7;
+    outline-offset: 5px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    background: white;
+    padding: 10px;
+    z-index: 300;
+}
+
+.skip-link:focus {
+    top: 8px;
+}
+
+.container {
+    width: min(1120px, calc(100% - 96px));
+    margin-inline: auto;
+}
+
+/* ヘッダーとスマホメニュー */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+
+.home-header {
+    background: var(--yellow);
+}
+
+.header-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -.4px;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.desktop-nav a {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.desktop-nav a:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-bars,
+.menu-bars:before,
+.menu-bars:after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    position: relative;
+}
+
+.menu-bars:before,
+.menu-bars:after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.menu-bars:before {
+    top: -6px;
+}
+
+.menu-bars:after {
+    top: 6px;
+}
+
+.mobile-menu[hidden] {
+    display: none;
+}
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    background: white;
+    z-index: 200;
+    padding: 80px 28px 40px;
+}
+
+.menu-close {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    font-size: 36px;
+    line-height: 1;
+}
+
+.mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
+}
+
+.mobile-menu nav a {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* トップのメインビジュアル */
+.hero {
+    background: var(--yellow);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 100px 24px 130px;
+}
+
+.hero-inner {
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0 0 18px;
+    font-weight: 750;
+}
+
+.hero .role {
+    font-size: 23px;
+    margin: 0 0 12px;
+}
+
+.hero .lead {
+    font-size: 14px;
+    margin: 0 0 24px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.button {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    background: var(--ink);
+    color: #fff;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    transition: background .2s, transform .2s;
+}
+
+.button:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.button.secondary {
+    background: white;
+    color: var(--ink);
+}
+
+.button.secondary:hover {
+    background: #eee;
+}
+
+/* 各セクションと制作実績 */
+.section {
+    padding: 80px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-heading h2,
+.section-heading h1 {
+    font-size: 34px;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    letter-spacing: -.5px;
+}
+
+.section-heading p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.section-heading:after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--ink);
+    margin: 12px auto 0;
+}
+
+.works-section {
+    background: var(--surface);
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.work-card {
+    min-width: 0;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #00000008;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px #00000010;
+}
+
+.work-art {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    background: #eee;
+}
+
+.work-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.work-body {
+    padding: 18px 18px 20px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 9px;
+}
+
+.tag {
+    background: #eee;
+    color: #555;
+    padding: 2px 8px;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.work-body h3 {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 6px;
+}
+
+.more {
+    text-align: center;
+    margin-top: 48px;
+}
+
+/* 自己紹介 */
+.about-grid {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 72px;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 220px;
+    height: 220px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.profile h3 {
+    font-size: 16px;
+    margin: 12px 0 4px;
+}
+
+.profile p {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.about-copy h3 {
+    font-size: 15px;
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+}
+
+.about-copy p {
+    font-size: 14px;
+    margin: 0 0 24px;
+    line-height: 1.9;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills li {
+    background: var(--ink);
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 20px;
+    min-width: 72px;
+    text-align: center;
+}
+
+/* お問い合わせ */
+.contact-section {
+    background: var(--surface);
+}
+
+.contact-form {
+    width: min(580px, 100%);
+    margin: auto;
+    background: #fff;
+    padding: 48px;
+    border-radius: 6px;
+    box-shadow: 0 3px 20px #00000006;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.required {
+    color: #888;
+    font-size: 11px;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding: 12px;
+    background: #fff;
+    font-size: 16px;
+    color: var(--ink);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: #999;
+    font-size: 13px;
+}
+
+.field textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.contact-form .button {
+    width: 100%;
+}
+
+.form-note {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+    margin: 16px 0 0;
+}
+
+/* フッターと一覧ページ */
+.site-footer {
+    background: var(--ink);
+    color: #999;
+    text-align: center;
+    padding: 22px 24px;
+    font-size: 11px;
+}
+
+.listing-title {
+    padding: 56px 0 40px;
+}
+
+.listing-title .section-heading {
+    margin: 0;
+}
+
+.listing-main {
+    background: #f4f4f4;
+    padding: 48px 0;
+}
+
+.listing-main .work-grid {
+    row-gap: 28px;
+}
+
+.footer-spacer {
+    min-height: calc(100dvh - 68px);
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-spacer .listing-main {
+    flex: 1;
+}
+
+@media(min-width:1500px) {
+    .hero {
+        min-height: 640px;
+    }
+}
+
+@media(max-width:900px) {
+    .container {
+        width: calc(100% - 48px);
+    }
+
+    .work-grid {
+        gap: 22px;
+    }
+
+    .about-grid {
+        gap: 40px;
+        grid-template-columns: 200px 1fr;
+    }
+
+    .profile img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .desktop-nav {
+        gap: 26px;
+    }
+}
+
+/* スマートフォン用（640px以下） */
+@media(max-width:640px) {
+    html {
+        scroll-padding-top: 72px;
+    }
+
+    .site-header {
+        height: 60px;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        margin-right: -10px;
+    }
+
+    .hero {
+        min-height: 340px;
+        padding: 52px 24px 56px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        letter-spacing: -1px;
+        margin-bottom: 10px;
+    }
+
+    .hero .role {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .hero .lead {
+        font-size: 11px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+        max-width: 300px;
+        margin: auto;
+    }
+
+    .button {
+        min-height: 46px;
+    }
+
+    .section {
+        padding: 52px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 30px;
+    }
+
+    .section-heading h2,
+    .section-heading h1 {
+        font-size: 27px;
+    }
+
+    .section-heading p {
+        font-size: 11px;
+    }
+
+    .section-heading:after {
+        width: 32px;
+        margin-top: 10px;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .work-body {
+        padding: 15px 16px 18px;
+    }
+
+    .work-body h3 {
+        font-size: 15px;
+    }
+
+    .tag {
+        font-size: 10px;
+    }
+
+    .more {
+        margin-top: 30px;
+    }
+
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: stretch;
+    }
+
+    .profile img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .profile h3 {
+        font-size: 16px;
+    }
+
+    .about-copy h3 {
+        font-size: 14px;
+    }
+
+    .about-copy p {
+        font-size: 14px;
+    }
+
+    .skills {
+        gap: 8px;
+    }
+
+    .skills li {
+        padding: 4px 12px;
+        min-width: 60px;
+        font-size: 11px;
+    }
+
+    .contact-form {
+        padding: 24px 20px;
+    }
+
+    .contact-section .container {
+        width: calc(100% - 40px);
+    }
+
+    .field textarea {
+        min-height: 140px;
+    }
+
+    .site-footer {
+        font-size: 10px;
+        padding: 20px 16px;
+    }
+
+    .listing-title {
+        padding: 42px 0 32px;
+    }
+
+    .listing-main {
+        padding: 30px 0 48px;
+    }
+
+    .footer-spacer {
+        min-height: calc(100dvh - 60px);
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *:before,
+    *:after {
+        transition: none !important;
+    }
+}
+/* HTMLだけで開閉できる作品詳細 */
+.work-type {
+    margin: 0 0 12px;
+    color: #666;
+    font-size: 12px;
+}
+.work-details {
+    font-size: 13px;
+}
+.work-details summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+.work-details summary:focus-visible {
+    outline: 3px solid #4269d7;
+    outline-offset: 4px;
+}
+.image-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.button:disabled {
+    background: #666;
+    border-color: #666;
+    cursor: not-allowed;
+    transform: none;
+}
+.footer-spacer > main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.work-card-link:hover {
+  opacity: 0.8;
+}
+
+.work-card-link:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 4px;
+}
