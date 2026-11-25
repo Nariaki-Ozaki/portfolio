@@ -779,3 +779,7 @@ textarea:focus-visible {
   outline: 3px solid #111;
   outline-offset: 4px;
 }
+
+.profile img {
+    aspect-ratio: 1 / 1;
+}
